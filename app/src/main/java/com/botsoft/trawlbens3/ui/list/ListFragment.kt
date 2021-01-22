@@ -1,17 +1,17 @@
 package com.botsoft.trawlbens3.ui.list
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
-import com.botsoft.trawlbens3.R
+import com.botsoft.trawlbens3.data.entity.Game
 import com.botsoft.trawlbens3.databinding.FragmentListBinding
 import com.botsoft.trawlbens3.ui.BaseFragment
 import com.botsoft.trawlbens3.ui.adapter.ListGameAdapter
+import com.botsoft.trawlbens3.ui.detail.DetailFragmentArgs
 
 class ListFragment : BaseFragment() {
     val viewModel: ListViewModel? by viewModels{ viewModelFactory}
@@ -36,13 +36,16 @@ class ListFragment : BaseFragment() {
                     true
                 }
         }
-        binding.rvGame.adapter = ListGameAdapter(
-//            UserListener { user, imageView ->
-//            val extras = FragmentNavigatorExtras(imageView to user.id)
-//            val action = UserListFragmentDirections.actionUserDetail(user, imageView.transitionName)
-//            findNavController().navigate(action, extras)
-//        },userViewModel
-        )
+        val adapter = ListGameAdapter()
+        binding.rvGame.adapter = adapter
+        adapter.listener = object : ListGameAdapter.OnItemClickListener {
+            override fun onItemClick(game: Game) {
+                val extras = FragmentNavigatorExtras()
+                val action = ListFragmentDirections.actionListFragmentToDetailFragment(game.id!!)
+                findNavController().navigate(action, extras)
+            }
+        }
+
         return binding.root
     }
 

@@ -87,7 +87,7 @@ class RetrofitModule {
             .create()
         return Retrofit.Builder()
             .baseUrl(baseUrl)
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
 //            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)

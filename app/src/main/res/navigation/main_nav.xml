@@ -6,5 +6,17 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.botsoft.trawlbens3.ui.list.ListFragment"
-        android:label="List Game" />
+        android:label="List Game" >
+        <action
+            android:id="@+id/action_listFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.botsoft.trawlbens3.ui.detail.DetailFragment"
+        android:label="Detail Game">
+        <argument
+            android:name="gameId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

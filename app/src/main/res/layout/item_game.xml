@@ -10,6 +10,9 @@
         <variable
             name="resUtil"
             type="com.botsoft.trawlbens3.ui.adapter.ListGameAdapter.ResUtil" />
+        <variable
+            name="stringUtil"
+            type="com.botsoft.trawlbens3.di.extension.StringExtension" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -25,18 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!--            <de.hdodenhof.circleimageview.CircleImageView-->
-            <!--                android:id="@+id/iv_user"-->
-            <!--                android:layout_width="60dp"-->
-            <!--                android:layout_height="60dp"-->
-            <!--                android:layout_margin="6dp"-->
-            <!--                android:src="@drawable/ic_avatar"-->
-            <!--                app:cardCornerRadius="12dp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent" />-->
             <ImageView
-                android:id="@+id/iv_user"
+                android:id="@+id/iv_game"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_margin="6dp"
@@ -48,26 +41,29 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_username"
+                android:id="@+id/tv_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@{game.name}"
                 android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/material_grey600"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_user"
-                app:layout_constraintTop_toTopOf="@id/iv_user"
+                app:layout_constraintStart_toEndOf="@id/iv_game"
+                app:layout_constraintTop_toTopOf="@id/iv_game"
                 tools:text="User Name" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_release"
                 android:layout_width="0dp"
+                android:textSize="12sp"
+                android:text="@{stringUtil.defaultDateFormat(game.released)}"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_username"
-                app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+                app:layout_constraintStart_toStartOf="@+id/tv_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
