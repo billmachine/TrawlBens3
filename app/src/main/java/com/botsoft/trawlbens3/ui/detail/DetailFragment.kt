@@ -44,7 +44,7 @@ class DetailFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel?.getGamesById(arg.gameId)?.observe(viewLifecycleOwner){
             txt_name.text = it.name
-            txt_desc.text = it.description
+            txt_desc.text = it.description_raw
             Glide.with(this).load(it.background_image).circleCrop()
                 .placeholder(R.drawable.ic_placeholder)
                 .error(R.drawable.ic_placeholder)
